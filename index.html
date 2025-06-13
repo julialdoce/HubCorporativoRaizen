@@ -86,8 +86,8 @@
         </div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Nossa Energia no Seu Dia a Dia</h1>
-                <p>Conectando pessoas, processos e tecnologia para um futuro mais sustentável</p>
+                <h1 data-editable="hero-title">Nossa Energia no Seu Dia a Dia</h1>
+                <p data-editable="hero-subtitle">Conectando pessoas, processos e tecnologia para um futuro mais sustentável</p>
                 <button class="hero-btn" onclick="showSection('dashboard')">
                     <i class="fas fa-arrow-right"></i>
                     Acessar Hub
@@ -99,8 +99,8 @@
                         <i class="fas fa-leaf"></i>
                     </div>
                     <div class="stat-content">
-                        <h3>Sustentável</h3>
-                        <p>Energia renovável</p>
+                        <h3 data-editable="stat1-title">Sustentável</h3>
+                        <p data-editable="stat1-desc">Energia renovável</p>
                     </div>
                 </div>
                 <div class="stat-item">
@@ -108,8 +108,8 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="stat-content">
-                        <h3>Colaborativo</h3>
-                        <p>Trabalho em equipe</p>
+                        <h3 data-editable="stat2-title">Colaborativo</h3>
+                        <p data-editable="stat2-desc">Trabalho em equipe</p>
                     </div>
                 </div>
                 <div class="stat-item">
@@ -117,8 +117,8 @@
                         <i class="fas fa-rocket"></i>
                     </div>
                     <div class="stat-content">
-                        <h3>Inovador</h3>
-                        <p>Tecnologia avançada</p>
+                        <h3 data-editable="stat3-title">Inovador</h3>
+                        <p data-editable="stat3-desc">Tecnologia avançada</p>
                     </div>
                 </div>
             </div>
@@ -177,11 +177,11 @@
                         <i class="fas fa-building"></i>
                     </div>
                     <div class="company-details">
-                        <strong>Raizen BSMA</strong>
-                        <small>Hub Corporativo v2.0</small>
+                        <strong data-editable="company-name">Raizen BSMA</strong>
+                        <small data-editable="system-version">Hub Corporativo v2.0</small>
                         <div class="company-status">
                             <span class="status-dot online"></span>
-                            <span>Sistema Online</span>
+                            <span data-editable="system-status">Sistema Online</span>
                         </div>
                     </div>
                 </div>
@@ -199,15 +199,15 @@
             <section id="dashboard" class="content-section">
                 <div class="section-header">
                     <div class="section-title">
-                        <h2>Dashboard</h2>
-                        <p>Visão geral do Hub Corporativo Raizen BSMA</p>
+                        <h2 data-editable="dashboard-title">Dashboard</h2>
+                        <p data-editable="dashboard-subtitle">Visão geral do Hub Corporativo Raizen BSMA</p>
                     </div>
                     <div class="section-actions">
                         <button class="btn btn-secondary">
                             <i class="fas fa-download"></i>
                             Exportar Relatório
                         </button>
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary admin-only">
                             <i class="fas fa-plus"></i>
                             Novo Item
                         </button>
@@ -227,10 +227,10 @@
                         </div>
                         <div class="stat-content">
                             <h3>4</h3>
-                            <p>Arquivos Excel</p>
+                            <p data-editable="files-label">Arquivos Excel</p>
                             <div class="stat-trend">
                                 <i class="fas fa-arrow-up"></i>
-                                <span>+2 esta semana</span>
+                                <span data-editable="files-trend">+2 esta semana</span>
                             </div>
                         </div>
                         <div class="stat-chart">
@@ -249,10 +249,10 @@
                         </div>
                         <div class="stat-content">
                             <h3>5/6</h3>
-                            <p>Sistemas Online</p>
+                            <p data-editable="systems-label">Sistemas Online</p>
                             <div class="stat-trend">
                                 <i class="fas fa-arrow-up"></i>
-                                <span>98% uptime</span>
+                                <span data-editable="systems-trend">98% uptime</span>
                             </div>
                         </div>
                         <div class="stat-progress">
@@ -273,10 +273,10 @@
                         </div>
                         <div class="stat-content">
                             <h3>5</h3>
-                            <p>Avisos Ativos</p>
+                            <p data-editable="announcements-label">Avisos Ativos</p>
                             <div class="stat-trend">
                                 <i class="fas fa-minus"></i>
-                                <span>2 não lidos</span>
+                                <span data-editable="announcements-trend">2 não lidos</span>
                             </div>
                         </div>
                         <div class="stat-badges">
@@ -296,10 +296,10 @@
                         </div>
                         <div class="stat-content">
                             <h3>98%</h3>
-                            <p>Disponibilidade</p>
+                            <p data-editable="availability-label">Disponibilidade</p>
                             <div class="stat-trend">
                                 <i class="fas fa-arrow-up"></i>
-                                <span>+2% vs mês anterior</span>
+                                <span data-editable="availability-trend">+2% vs mês anterior</span>
                             </div>
                         </div>
                         <div class="stat-chart">
@@ -314,14 +314,14 @@
                         <div class="card-header">
                             <div class="card-title">
                                 <i class="fas fa-file-excel"></i>
-                                <h3>Arquivos Recentes</h3>
+                                <h3 data-editable="recent-files-title">Arquivos Recentes</h3>
                             </div>
                             <button class="card-action" onclick="showSection('arquivos')">
                                 <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                         <div class="card-content">
-                            <p>Últimos arquivos Excel adicionados</p>
+                            <p data-editable="recent-files-subtitle">Últimos arquivos Excel adicionados</p>
                             <div class="recent-list" id="recentFiles">
                                 <!-- Arquivos recentes serão inseridos aqui -->
                             </div>
@@ -332,14 +332,14 @@
                         <div class="card-header">
                             <div class="card-title">
                                 <i class="fas fa-bullhorn"></i>
-                                <h3>Avisos Importantes</h3>
+                                <h3 data-editable="recent-announcements-title">Avisos Importantes</h3>
                             </div>
                             <button class="card-action" onclick="showSection('avisos')">
                                 <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                         <div class="card-content">
-                            <p>Últimas comunicações importantes</p>
+                            <p data-editable="recent-announcements-subtitle">Últimas comunicações importantes</p>
                             <div class="recent-list" id="recentAnnouncements">
                                 <!-- Avisos recentes serão inseridos aqui -->
                             </div>
@@ -350,14 +350,14 @@
                         <div class="card-header">
                             <div class="card-title">
                                 <i class="fas fa-server"></i>
-                                <h3>Status dos Sistemas</h3>
+                                <h3 data-editable="systems-status-title">Status dos Sistemas</h3>
                             </div>
                             <button class="card-action" onclick="showSection('sistemas')">
                                 <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                         <div class="card-content">
-                            <p>Monitoramento em tempo real</p>
+                            <p data-editable="systems-status-subtitle">Monitoramento em tempo real</p>
                             <div class="systems-status" id="systemsStatus">
                                 <!-- Status dos sistemas será inserido aqui -->
                             </div>
@@ -370,8 +370,8 @@
             <section id="arquivos" class="content-section">
                 <div class="section-header">
                     <div class="section-title">
-                        <h2>Arquivos Excel</h2>
-                        <p>Gestão de planilhas e documentos Excel</p>
+                        <h2 data-editable="files-title">Arquivos Excel</h2>
+                        <p data-editable="files-subtitle">Gestão de planilhas e documentos Excel</p>
                     </div>
                     <div class="section-actions">
                         <button class="btn btn-secondary">
@@ -421,8 +421,8 @@
             <section id="sistemas" class="content-section">
                 <div class="section-header">
                     <div class="section-title">
-                        <h2>Sistemas Corporativos</h2>
-                        <p>Links para sistemas internos da Raizen</p>
+                        <h2 data-editable="systems-title">Sistemas Corporativos</h2>
+                        <p data-editable="systems-subtitle">Links para sistemas internos da Raizen</p>
                     </div>
                     <div class="section-actions">
                         <button class="btn btn-secondary">
@@ -443,8 +443,8 @@
                             <i class="fas fa-circle"></i>
                         </div>
                         <div class="status-content">
-                            <h4>5 Sistemas Online</h4>
-                            <p>Funcionando normalmente</p>
+                            <h4 data-editable="online-count">5 Sistemas Online</h4>
+                            <p data-editable="online-text">Funcionando normalmente</p>
                         </div>
                     </div>
                     <div class="status-card maintenance">
@@ -452,8 +452,8 @@
                             <i class="fas fa-circle"></i>
                         </div>
                         <div class="status-content">
-                            <h4>1 Em Manutenção</h4>
-                            <p>Retorno previsto: 14h</p>
+                            <h4 data-editable="maintenance-count">1 Em Manutenção</h4>
+                            <p data-editable="maintenance-text">Retorno previsto: 14h</p>
                         </div>
                     </div>
                     <div class="status-card offline">
@@ -461,8 +461,8 @@
                             <i class="fas fa-circle"></i>
                         </div>
                         <div class="status-content">
-                            <h4>0 Sistemas Offline</h4>
-                            <p>Nenhum problema detectado</p>
+                            <h4 data-editable="offline-count">0 Sistemas Offline</h4>
+                            <p data-editable="offline-text">Nenhum problema detectado</p>
                         </div>
                     </div>
                 </div>
@@ -477,8 +477,8 @@
             <section id="avisos" class="content-section">
                 <div class="section-header">
                     <div class="section-title">
-                        <h2>Avisos e Comunicados</h2>
-                        <p>Comunicações internas e avisos importantes</p>
+                        <h2 data-editable="announcements-title">Avisos e Comunicados</h2>
+                        <p data-editable="announcements-subtitle">Comunicações internas e avisos importantes</p>
                     </div>
                     <div class="section-actions">
                         <button class="btn btn-secondary">
@@ -499,8 +499,8 @@
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
                         <div class="type-content">
-                            <h4>1 Alerta</h4>
-                            <p>Requer atenção imediata</p>
+                            <h4 data-editable="alert-count">1 Alerta</h4>
+                            <p data-editable="alert-text">Requer atenção imediata</p>
                         </div>
                     </div>
                     <div class="type-card warning">
@@ -508,8 +508,8 @@
                             <i class="fas fa-exclamation-circle"></i>
                         </div>
                         <div class="type-content">
-                            <h4>1 Aviso</h4>
-                            <p>Informação importante</p>
+                            <h4 data-editable="warning-count">1 Aviso</h4>
+                            <p data-editable="warning-text">Informação importante</p>
                         </div>
                     </div>
                     <div class="type-card info">
@@ -517,8 +517,8 @@
                             <i class="fas fa-info-circle"></i>
                         </div>
                         <div class="type-content">
-                            <h4>3 Informações</h4>
-                            <p>Comunicados gerais</p>
+                            <h4 data-editable="info-count">3 Informações</h4>
+                            <p data-editable="info-text">Comunicados gerais</p>
                         </div>
                     </div>
                 </div>
@@ -539,7 +539,7 @@
         <div class="modal-backdrop" onclick="closeModal('uploadModal')"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Carregar Arquivo Excel</h3>
+                <h3 data-editable="upload-title">Carregar Arquivo Excel</h3>
                 <button class="modal-close" onclick="closeModal('uploadModal')">
                     <i class="fas fa-times"></i>
                 </button>
@@ -549,9 +549,9 @@
                     <div class="upload-icon">
                         <i class="fas fa-cloud-upload-alt"></i>
                     </div>
-                    <h4>Clique para selecionar arquivo</h4>
-                    <p>ou arraste e solte aqui</p>
-                    <small>Formatos aceitos: .xlsx, .xls (máx. 10MB)</small>
+                    <h4 data-editable="upload-instructions">Clique para selecionar arquivo</h4>
+                    <p data-editable="upload-dragdrop">ou arraste e solte aqui</p>
+                    <small data-editable="upload-formats">Formatos aceitos: .xlsx, .xls (máx. 10MB)</small>
                 </div>
                 <input type="file" id="fileInput" accept=".xlsx,.xls" style="display: none;">
                 
@@ -562,6 +562,22 @@
                     <p id="progressText">Carregando arquivo...</p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal para Edição de Sistema (Adicionado) -->
+    <div class="modal" id="editSystemModal" style="display: none;">
+        <div class="modal-backdrop" onclick="closeModal('editSystemModal')"></div>
+        <div class="modal-content">
+            <!-- Conteúdo será inserido dinamicamente pelo JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modal para Edição de Aviso (Adicionado) -->
+    <div class="modal" id="editAnnouncementModal" style="display: none;">
+        <div class="modal-backdrop" onclick="closeModal('editAnnouncementModal')"></div>
+        <div class="modal-content large">
+            <!-- Conteúdo será inserido dinamicamente pelo JavaScript -->
         </div>
     </div>
 
