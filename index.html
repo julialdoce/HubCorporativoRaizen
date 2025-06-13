@@ -3,24 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hub Corporativo Raizen BSMA</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Hub Corporativo Raízen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS que já enviamos anteriormente */
+        :root {
+            --primary: #7B2CBF;
+            --secondary: #2D7D32;
+            --accent: #FF6B35;
+            --white: #FFFFFF;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-500: #6B7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --radius-lg: 12px;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-100);
+        }
+        
+        /* Adicione aqui o restante do CSS que enviamos */
+    </style>
 </head>
-<body>
-    <!-- Header -->
+<body class="admin"> <!-- Alterar para "viewer" quando necessário -->
+
+    <!-- Barra de Navegação Superior -->
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <div class="logo">
-                    <img src="images/raizen-logo.svg" alt="Raizen" class="logo-img">
-                </div>
+                <img src="images/raizen-logo.png" alt="Raízen" class="logo-img">
                 <div class="logo-text">
                     <h1>Hub Corporativo</h1>
-                    <p>Raizen BSMA</p>
+                    <p>Raízen BSMA</p>
                 </div>
             </div>
             
@@ -37,7 +57,7 @@
                         </div>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="dropdown-content profile-dropdown" id="roleDropdown">
+                    <div class="dropdown-content profile-dropdown">
                         <div class="dropdown-header">
                             <h3>Perfil de Acesso</h3>
                         </div>
@@ -60,17 +80,32 @@
 
                 <!-- Notificações -->
                 <div class="dropdown">
-                    <button class="dropdown-btn notification-btn" id="notificationBtn">
+                    <button class="dropdown-btn notification-btn">
                         <i class="fas fa-bell"></i>
-                        <span class="notification-badge" id="notificationBadge">2</span>
+                        <span class="notification-badge">2</span>
                     </button>
-                    <div class="dropdown-content notification-dropdown" id="notificationDropdown">
-                        <div class="notification-header">
-                            <h3>Notificações</h3>
-                            <button onclick="markAllAsRead()" class="mark-all-btn">Marcar todas como lidas</button>
-                        </div>
-                        <div class="notification-list" id="notificationList">
-                            <!-- Notificações serão inseridas aqui via JavaScript -->
+                    <div class="dropdown-content notification-dropdown">
+                        <div class="notification-list">
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <h4>Novo comunicado</h4>
+                                    <p>Atualização da política de segurança</p>
+                                    <small>Hoje, 09:30</small>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <h4>Manutenção programada</h4>
+                                    <p>Sistema de RH estará offline amanhã</p>
+                                    <small>Ontem, 14:15</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -78,511 +113,383 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="heroSection">
-        <div class="hero-background">
-            <div class="hero-overlay"></div>
-            <img src="images/hero-bg.jpg" alt="Raizen Background" class="hero-image">
-        </div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 data-editable="hero-title">Nossa Energia no Seu Dia a Dia</h1>
-                <p data-editable="hero-subtitle">Conectando pessoas, processos e tecnologia para um futuro mais sustentável</p>
-                <button class="hero-btn" onclick="showSection('dashboard')">
-                    <i class="fas fa-arrow-right"></i>
-                    Acessar Hub
-                </button>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 data-editable="stat1-title">Sustentável</h3>
-                        <p data-editable="stat1-desc">Energia renovável</p>
-                    </div>
+    <!-- Menu Lateral -->
+    <aside class="sidebar" id="sidebar">
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active" onclick="showSection('dashboard')">
+                <div class="nav-icon">
+                    <i class="fas fa-home"></i>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 data-editable="stat2-title">Colaborativo</h3>
-                        <p data-editable="stat2-desc">Trabalho em equipe</p>
-                    </div>
+                <div class="nav-content">
+                    <span class="nav-title">Dashboard</span>
+                    <small class="nav-subtitle">Visão geral</small>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 data-editable="stat3-title">Inovador</h3>
-                        <p data-editable="stat3-desc">Tecnologia avançada</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <nav class="nav-menu">
-                <a href="#" class="nav-item" onclick="showSection('dashboard')">
-                    <div class="nav-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <div class="nav-content">
-                        <span class="nav-title">Dashboard</span>
-                        <small class="nav-subtitle">Visão geral</small>
-                    </div>
-                    <span class="nav-badge">4</span>
-                </a>
-                <a href="#" class="nav-item" onclick="showSection('arquivos')">
-                    <div class="nav-icon">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                    <div class="nav-content">
-                        <span class="nav-title">Arquivos Excel</span>
-                        <small class="nav-subtitle">Planilhas e relatórios</small>
-                    </div>
-                    <span class="nav-badge">5</span>
-                </a>
-                <a href="#" class="nav-item" onclick="showSection('sistemas')">
-                    <div class="nav-icon">
-                        <i class="fas fa-external-link-alt"></i>
-                    </div>
-                    <div class="nav-content">
-                        <span class="nav-title">Sistemas</span>
-                        <small class="nav-subtitle">Links corporativos</small>
-                    </div>
-                    <span class="nav-badge">6</span>
-                </a>
-                <a href="#" class="nav-item" onclick="showSection('avisos')">
-                    <div class="nav-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <div class="nav-content">
-                        <span class="nav-title">Avisos</span>
-                        <small class="nav-subtitle">Comunicados</small>
-                    </div>
-                    <span class="nav-badge">7</span>
-                </a>
-            </nav>
+            </a>
             
-            <div class="sidebar-footer">
-                <div class="company-info">
-                    <div class="company-logo">
-                        <i class="fas fa-building"></i>
+            <a href="#" class="nav-item" onclick="showSection('documentos')">
+                <div class="nav-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="nav-content">
+                    <span class="nav-title">Documentos</span>
+                    <small class="nav-subtitle">Manuais e políticas</small>
+                </div>
+                <span class="nav-badge admin-only">3</span>
+            </a>
+            
+            <a href="#" class="nav-item" onclick="showSection('avisos')">
+                <div class="nav-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="nav-content">
+                    <span class="nav-title">Avisos</span>
+                    <small class="nav-subtitle">Comunicados internos</small>
+                </div>
+                <span class="nav-badge">5</span>
+            </a>
+            
+            <a href="#" class="nav-item" onclick="showSection('colaboradores')">
+                <div class="nav-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="nav-content">
+                    <span class="nav-title">Colaboradores</span>
+                    <small class="nav-subtitle">Nossa equipe</small>
+                </div>
+            </a>
+            
+            <a href="#" class="nav-item" onclick="showSection('aniversarios')">
+                <div class="nav-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <div class="nav-content">
+                    <span class="nav-title">Aniversários</span>
+                    <small class="nav-subtitle">Comemorações</small>
+                </div>
+            </a>
+            
+            <div class="admin-only">
+                <a href="#" class="nav-item" onclick="showSection('administracao')">
+                    <div class="nav-icon">
+                        <i class="fas fa-cog"></i>
                     </div>
-                    <div class="company-details">
-                        <strong data-editable="company-name">Raizen BSMA</strong>
-                        <small data-editable="system-version">Hub Corporativo v2.0</small>
-                        <div class="company-status">
-                            <span class="status-dot online"></span>
-                            <span data-editable="system-status">Sistema Online</span>
+                    <div class="nav-content">
+                        <span class="nav-title">Administração</span>
+                        <small class="nav-subtitle">Configurações</small>
+                    </div>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="company-status">
+                <span class="status-dot online"></span>
+                <span>Sistema Online</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Dashboard -->
+        <section id="dashboard" class="content-section active">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Dashboard</h2>
+                    <p>Bem-vindo ao Hub Corporativo Raízen BSMA</p>
+                </div>
+                <div class="section-actions admin-only">
+                    <button class="btn btn-primary" onclick="openModal('novoAviso')">
+                        <i class="fas fa-plus"></i> Novo Aviso
+                    </button>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <h3>24</h3>
+                        <p>Documentos disponíveis</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card success">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <h3>156</h3>
+                        <p>Colaboradores</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card warning">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <h3>5</h3>
+                        <p>Aniversariantes este mês</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-bullhorn"></i>
+                            <h3>Últimos Avisos</h3>
+                        </div>
+                        <button class="card-action" onclick="showSection('avisos')">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="recent-list">
+                            <div class="recent-item">
+                                <div class="recent-icon warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="recent-content">
+                                    <strong>Atualização da Política de Segurança</strong>
+                                    <small>Publicado em 15/05/2023</small>
+                                </div>
+                            </div>
+                            <div class="recent-item">
+                                <div class="recent-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="recent-content">
+                                    <strong>Treinamento de Novo Sistema</strong>
+                                    <small>Publicado em 10/05/2023</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-birthday-cake"></i>
+                            <h3>Próximos Aniversários</h3>
+                        </div>
+                        <button class="card-action" onclick="showSection('aniversarios')">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="recent-list">
+                            <div class="recent-item">
+                                <div class="recent-icon accent">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="recent-content">
+                                    <strong>João Silva</strong>
+                                    <small>20 de Maio - Departamento Comercial</small>
+                                </div>
+                            </div>
+                            <div class="recent-item">
+                                <div class="recent-icon accent">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="recent-content">
+                                    <strong>Maria Oliveira</strong>
+                                    <small>25 de Maio - Departamento Financeiro</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </aside>
+        </section>
 
-        <!-- Mobile Menu Button -->
-        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleSidebar()">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Dashboard Section -->
-            <section id="dashboard" class="content-section">
-                <div class="section-header">
-                    <div class="section-title">
-                        <h2 data-editable="dashboard-title">Dashboard</h2>
-                        <p data-editable="dashboard-subtitle">Visão geral do Hub Corporativo Raizen BSMA</p>
-                    </div>
-                    <div class="section-actions">
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-download"></i>
-                            Exportar Relatório
-                        </button>
-                        <button class="btn btn-primary admin-only">
-                            <i class="fas fa-plus"></i>
-                            Novo Item
-                        </button>
-                    </div>
+        <!-- Documentos -->
+        <section id="documentos" class="content-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Documentos Corporativos</h2>
+                    <p>Manuais, políticas e documentos internos</p>
                 </div>
-
-                <!-- Stats Cards -->
-                <div class="stats-grid">
-                    <div class="stat-card primary">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <i class="fas fa-file-excel"></i>
-                            </div>
-                            <div class="stat-menu">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </div>
-                        </div>
-                        <div class="stat-content">
-                            <h3>4</h3>
-                            <p data-editable="files-label">Arquivos Excel</p>
-                            <div class="stat-trend">
-                                <i class="fas fa-arrow-up"></i>
-                                <span data-editable="files-trend">+2 esta semana</span>
-                            </div>
-                        </div>
-                        <div class="stat-chart">
-                            <div class="mini-chart"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card success">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="stat-menu">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </div>
-                        </div>
-                        <div class="stat-content">
-                            <h3>5/6</h3>
-                            <p data-editable="systems-label">Sistemas Online</p>
-                            <div class="stat-trend">
-                                <i class="fas fa-arrow-up"></i>
-                                <span data-editable="systems-trend">98% uptime</span>
-                            </div>
-                        </div>
-                        <div class="stat-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 83%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card warning">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <i class="fas fa-bullhorn"></i>
-                            </div>
-                            <div class="stat-menu">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </div>
-                        </div>
-                        <div class="stat-content">
-                            <h3>5</h3>
-                            <p data-editable="announcements-label">Avisos Ativos</p>
-                            <div class="stat-trend">
-                                <i class="fas fa-minus"></i>
-                                <span data-editable="announcements-trend">2 não lidos</span>
-                            </div>
-                        </div>
-                        <div class="stat-badges">
-                            <span class="badge alert">1 Alerta</span>
-                            <span class="badge info">4 Info</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card info">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="stat-menu">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </div>
-                        </div>
-                        <div class="stat-content">
-                            <h3>98%</h3>
-                            <p data-editable="availability-label">Disponibilidade</p>
-                            <div class="stat-trend">
-                                <i class="fas fa-arrow-up"></i>
-                                <span data-editable="availability-trend">+2% vs mês anterior</span>
-                            </div>
-                        </div>
-                        <div class="stat-chart">
-                            <div class="mini-chart success"></div>
-                        </div>
-                    </div>
+                <div class="section-actions admin-only">
+                    <button class="btn btn-primary" onclick="openModal('novoDocumento')">
+                        <i class="fas fa-upload"></i> Adicionar Documento
+                    </button>
                 </div>
+            </div>
+            
+            <div class="files-grid">
+                <!-- Documentos serão carregados dinamicamente -->
+            </div>
+        </section>
 
-                <!-- Dashboard Grid -->
-                <div class="dashboard-grid">
-                    <div class="dashboard-card files-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-file-excel"></i>
-                                <h3 data-editable="recent-files-title">Arquivos Recentes</h3>
-                            </div>
-                            <button class="card-action" onclick="showSection('arquivos')">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        <div class="card-content">
-                            <p data-editable="recent-files-subtitle">Últimos arquivos Excel adicionados</p>
-                            <div class="recent-list" id="recentFiles">
-                                <!-- Arquivos recentes serão inseridos aqui -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="dashboard-card announcements-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-bullhorn"></i>
-                                <h3 data-editable="recent-announcements-title">Avisos Importantes</h3>
-                            </div>
-                            <button class="card-action" onclick="showSection('avisos')">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        <div class="card-content">
-                            <p data-editable="recent-announcements-subtitle">Últimas comunicações importantes</p>
-                            <div class="recent-list" id="recentAnnouncements">
-                                <!-- Avisos recentes serão inseridos aqui -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-card systems-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-server"></i>
-                                <h3 data-editable="systems-status-title">Status dos Sistemas</h3>
-                            </div>
-                            <button class="card-action" onclick="showSection('sistemas')">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        <div class="card-content">
-                            <p data-editable="systems-status-subtitle">Monitoramento em tempo real</p>
-                            <div class="systems-status" id="systemsStatus">
-                                <!-- Status dos sistemas será inserido aqui -->
-                            </div>
-                        </div>
-                    </div>
+        <!-- Avisos -->
+        <section id="avisos" class="content-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Avisos e Comunicados</h2>
+                    <p>Informações importantes para todos os colaboradores</p>
                 </div>
-            </section>
-
-            <!-- Arquivos Excel Section -->
-            <section id="arquivos" class="content-section">
-                <div class="section-header">
-                    <div class="section-title">
-                        <h2 data-editable="files-title">Arquivos Excel</h2>
-                        <p data-editable="files-subtitle">Gestão de planilhas e documentos Excel</p>
-                    </div>
-                    <div class="section-actions">
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-filter"></i>
-                            Filtros
-                        </button>
-                        <button class="btn btn-primary admin-only" onclick="uploadFile()">
-                            <i class="fas fa-upload"></i>
-                            Carregar Arquivo
-                        </button>
-                    </div>
+                <div class="section-actions admin-only">
+                    <button class="btn btn-primary" onclick="openModal('novoAviso')">
+                        <i class="fas fa-plus"></i> Novo Aviso
+                    </button>
                 </div>
+            </div>
+            
+            <div class="announcements-list">
+                <!-- Avisos serão carregados dinamicamente -->
+            </div>
+        </section>
 
-                <!-- Filtros -->
-                <div class="filters-section">
-                    <div class="search-container">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Buscar por nome do arquivo ou autor..." id="fileSearch">
-                        </div>
-                    </div>
-                    <div class="filter-controls">
-                        <select id="fileCategory" class="filter-select">
-                            <option value="">Todas as categorias</option>
-                            <option value="Vendas">Vendas</option>
-                            <option value="Estoque">Estoque</option>
-                            <option value="Financeiro">Financeiro</option>
-                            <option value="RH">RH</option>
-                        </select>
-                        <select class="filter-select">
-                            <option value="">Ordenar por</option>
-                            <option value="date">Data</option>
-                            <option value="name">Nome</option>
-                            <option value="size">Tamanho</option>
-                            <option value="downloads">Downloads</option>
-                        </select>
-                    </div>
+        <!-- Colaboradores -->
+        <section id="colaboradores" class="content-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Nossos Colaboradores</h2>
+                    <p>Conheça nossa equipe</p>
                 </div>
-
-                <!-- Files Grid -->
-                <div class="files-grid" id="filesList">
-                    <!-- Arquivos serão inseridos aqui via JavaScript -->
+                <div class="section-actions admin-only">
+                    <button class="btn btn-primary" onclick="openModal('novoColaborador')">
+                        <i class="fas fa-plus"></i> Adicionar Colaborador
+                    </button>
                 </div>
-            </section>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Colaboradores serão carregados dinamicamente -->
+            </div>
+        </section>
 
-            <!-- Sistemas Corporativos Section -->
-            <section id="sistemas" class="content-section">
-                <div class="section-header">
-                    <div class="section-title">
-                        <h2 data-editable="systems-title">Sistemas Corporativos</h2>
-                        <p data-editable="systems-subtitle">Links para sistemas internos da Raizen</p>
-                    </div>
-                    <div class="section-actions">
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-sync"></i>
-                            Atualizar Status
-                        </button>
-                        <button class="btn btn-primary admin-only" onclick="addSystem()">
-                            <i class="fas fa-plus"></i>
-                            Adicionar Sistema
-                        </button>
-                    </div>
+        <!-- Aniversários -->
+        <section id="aniversarios" class="content-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Aniversariantes</h2>
+                    <p>Comemore com nossos colaboradores</p>
                 </div>
+            </div>
+            
+            <div class="calendar-view">
+                <!-- Calendário de aniversários -->
+            </div>
+        </section>
 
-                <!-- Status Overview -->
-                <div class="status-overview">
-                    <div class="status-card online">
-                        <div class="status-icon">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="status-content">
-                            <h4 data-editable="online-count">5 Sistemas Online</h4>
-                            <p data-editable="online-text">Funcionando normalmente</p>
-                        </div>
-                    </div>
-                    <div class="status-card maintenance">
-                        <div class="status-icon">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="status-content">
-                            <h4 data-editable="maintenance-count">1 Em Manutenção</h4>
-                            <p data-editable="maintenance-text">Retorno previsto: 14h</p>
-                        </div>
-                    </div>
-                    <div class="status-card offline">
-                        <div class="status-icon">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="status-content">
-                            <h4 data-editable="offline-count">0 Sistemas Offline</h4>
-                            <p data-editable="offline-text">Nenhum problema detectado</p>
-                        </div>
-                    </div>
+        <!-- Administração (apenas para admin) -->
+        <section id="administracao" class="content-section admin-only">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Painel de Administração</h2>
+                    <p>Gerencie o conteúdo do Hub Corporativo</p>
                 </div>
+            </div>
+            
+            <div class="admin-panel">
+                <!-- Ferramentas de administração -->
+            </div>
+        </section>
+    </main>
 
-                <!-- Systems Grid -->
-                <div class="systems-grid" id="systemsList">
-                    <!-- Sistemas serão inseridos aqui via JavaScript -->
-                </div>
-            </section>
-
-            <!-- Avisos e Comunicados Section -->
-            <section id="avisos" class="content-section">
-                <div class="section-header">
-                    <div class="section-title">
-                        <h2 data-editable="announcements-title">Avisos e Comunicados</h2>
-                        <p data-editable="announcements-subtitle">Comunicações internas e avisos importantes</p>
-                    </div>
-                    <div class="section-actions">
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-filter"></i>
-                            Filtrar por Tipo
-                        </button>
-                        <button class="btn btn-primary admin-only" onclick="createAnnouncement()">
-                            <i class="fas fa-plus"></i>
-                            Criar Aviso
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Announcement Types -->
-                <div class="announcement-types">
-                    <div class="type-card alert">
-                        <div class="type-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <div class="type-content">
-                            <h4 data-editable="alert-count">1 Alerta</h4>
-                            <p data-editable="alert-text">Requer atenção imediata</p>
-                        </div>
-                    </div>
-                    <div class="type-card warning">
-                        <div class="type-icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </div>
-                        <div class="type-content">
-                            <h4 data-editable="warning-count">1 Aviso</h4>
-                            <p data-editable="warning-text">Informação importante</p>
-                        </div>
-                    </div>
-                    <div class="type-card info">
-                        <div class="type-icon">
-                            <i class="fas fa-info-circle"></i>
-                        </div>
-                        <div class="type-content">
-                            <h4 data-editable="info-count">3 Informações</h4>
-                            <p data-editable="info-text">Comunicados gerais</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Announcements List -->
-                <div class="announcements-list" id="announcementsList">
-                    <!-- Avisos serão inseridos aqui via JavaScript -->
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <!-- Toast Container -->
-    <div class="toast-container" id="toastContainer"></div>
-
-    <!-- Modal para Upload de Arquivo -->
-    <div class="modal" id="uploadModal">
-        <div class="modal-backdrop" onclick="closeModal('uploadModal')"></div>
+    <!-- Modal para Novo Aviso -->
+    <div class="modal" id="novoAviso">
+        <div class="modal-backdrop" onclick="closeModal('novoAviso')"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h3 data-editable="upload-title">Carregar Arquivo Excel</h3>
-                <button class="modal-close" onclick="closeModal('uploadModal')">
+                <h3>Criar Novo Aviso</h3>
+                <button class="modal-close" onclick="closeModal('novoAviso')">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-                    <div class="upload-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
+                <form id="formAviso">
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="form-control" required>
                     </div>
-                    <h4 data-editable="upload-instructions">Clique para selecionar arquivo</h4>
-                    <p data-editable="upload-dragdrop">ou arraste e solte aqui</p>
-                    <small data-editable="upload-formats">Formatos aceitos: .xlsx, .xls (máx. 10MB)</small>
-                </div>
-                <input type="file" id="fileInput" accept=".xlsx,.xls" style="display: none;">
-                
-                <div class="upload-progress" id="uploadProgress" style="display: none;">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
+                    <div class="form-group">
+                        <label>Mensagem</label>
+                        <textarea class="form-control" rows="5" required></textarea>
                     </div>
-                    <p id="progressText">Carregando arquivo...</p>
-                </div>
+                    <div class="form-group">
+                        <label>Prioridade</label>
+                        <select class="form-control">
+                            <option>Normal</option>
+                            <option>Importante</option>
+                            <option>Urgente</option>
+                        </select>
+                    </div>
+                    <div class="form-group admin-only">
+                        <label>Anexar Arquivo</label>
+                        <input type="file" class="form-control">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Publicar Aviso</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Modal para Edição de Sistema (Adicionado) -->
-    <div class="modal" id="editSystemModal" style="display: none;">
-        <div class="modal-backdrop" onclick="closeModal('editSystemModal')"></div>
-        <div class="modal-content">
-            <!-- Conteúdo será inserido dinamicamente pelo JavaScript -->
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2023 Raízen BSMA - Todos os direitos reservados</p>
+            <div class="footer-links">
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Contato</a>
+            </div>
         </div>
-    </div>
+    </footer>
 
-    <!-- Modal para Edição de Aviso (Adicionado) -->
-    <div class="modal" id="editAnnouncementModal" style="display: none;">
-        <div class="modal-backdrop" onclick="closeModal('editAnnouncementModal')"></div>
-        <div class="modal-content large">
-            <!-- Conteúdo será inserido dinamicamente pelo JavaScript -->
-        </div>
-    </div>
-
-    <script src="js/script.js"></script>
+    <script>
+        // Funções JavaScript
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Atualiza o menu ativo
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`.nav-item[onclick="showSection('${sectionId}')"]`).classList.add('active');
+        }
+        
+        function switchRole(role) {
+            document.body.className = role;
+            document.getElementById('currentRole').textContent = 
+                role === 'admin' ? 'Administrador' : 'Visualizador';
+            
+            // Mostra mensagem de sucesso
+            alert(`Perfil alterado para ${role === 'admin' ? 'Administrador' : 'Visualizador'}`);
+        }
+        
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Garante que o dashboard seja mostrado por padrão
+            showSection('dashboard');
+        });
+    </script>
 </body>
 </html>
-
 
