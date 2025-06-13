@@ -1,8 +1,36 @@
+// Configurações do Sistema - FÁCIL DE EDITAR
+const CONFIG = {
+    // SENHAS (altere aqui)
+    ADMIN_PASSWORD: "raizen2025",
+    
+    // IMAGENS (altere os caminhos aqui)
+    IMAGES: {
+        logo: "images/raizen-logo.png",
+        heroBg: "images/hero-bg.jpg",
+        defaultAvatar: "images/avatar-default.png"
+    },
+    
+    // CORES (altere as cores aqui)
+    COLORS: {
+        primary: "#7B2CBF",      // Roxo da Raizen
+        secondary: "#2D7D32",    // Verde
+        accent: "#FF6B35"        // Laranja
+    },
+    
+    // TEXTOS (altere os textos aqui)
+    TEXTS: {
+        companyName: "Raizen BSMA",
+        heroTitle: "Nossa Energia no Seu Dia a Dia",
+        heroSubtitle: "Conectando pessoas, processos e tecnologia para um futuro mais sustentável"
+    }
+};
+
 // Estado da aplicação
 let currentUser = {
     name: 'Usuário Demo',
-    role: 'admin', // 'admin' ou 'viewer'
-    email: 'usuario@raizen.com.br'
+    role: 'viewer', // Inicia como visualizador
+    email: 'usuario@raizen.com.br',
+    isAuthenticated: false
 };
 
 let notifications = [
@@ -32,7 +60,8 @@ let files = [
         uploadDate: new Date('2025-01-15'),
         size: '2.4 MB',
         category: 'Vendas',
-        downloads: 23
+        downloads: 23,
+        image: 'images/file-excel.png'
     },
     {
         id: 2,
@@ -41,7 +70,8 @@ let files = [
         uploadDate: new Date('2024-12-20'),
         size: '1.8 MB',
         category: 'Estoque',
-        downloads: 45
+        downloads: 45,
+        image: 'images/file-excel.png'
     },
     {
         id: 3,
@@ -50,7 +80,8 @@ let files = [
         uploadDate: new Date('2024-12-30'),
         size: '3.2 MB',
         category: 'Financeiro',
-        downloads: 67
+        downloads: 67,
+        image: 'images/file-excel.png'
     },
     {
         id: 4,
@@ -59,7 +90,8 @@ let files = [
         uploadDate: new Date('2025-01-10'),
         size: '1.5 MB',
         category: 'RH',
-        downloads: 12
+        downloads: 12,
+        image: 'images/file-excel.png'
     }
 ];
 
@@ -71,7 +103,8 @@ let systems = [
         url: 'https://epi.raizen.com.br',
         category: 'Segurança',
         icon: 'fas fa-shield-alt',
-        status: 'online'
+        status: 'online',
+        image: 'images/system-epi.png'
     },
     {
         id: 2,
@@ -80,7 +113,8 @@ let systems = [
         url: 'https://rh.raizen.com.br',
         category: 'RH',
         icon: 'fas fa-users',
-        status: 'online'
+        status: 'online',
+        image: 'images/system-rh.png'
     },
     {
         id: 3,
@@ -89,7 +123,8 @@ let systems = [
         url: 'https://sap.raizen.com.br',
         category: 'ERP',
         icon: 'fas fa-database',
-        status: 'online'
+        status: 'online',
+        image: 'images/system-sap.png'
     },
     {
         id: 4,
@@ -98,7 +133,8 @@ let systems = [
         url: 'https://financeiro.raizen.com.br',
         category: 'Financeiro',
         icon: 'fas fa-dollar-sign',
-        status: 'maintenance'
+        status: 'maintenance',
+        image: 'images/system-financeiro.png'
     },
     {
         id: 5,
@@ -107,7 +143,8 @@ let systems = [
         url: 'https://vendas.raizen.com.br',
         category: 'Vendas',
         icon: 'fas fa-chart-line',
-        status: 'online'
+        status: 'online',
+        image: 'images/system-vendas.png'
     },
     {
         id: 6,
@@ -116,7 +153,8 @@ let systems = [
         url: 'https://compras.raizen.com.br',
         category: 'Compras',
         icon: 'fas fa-shopping-cart',
-        status: 'online'
+        status: 'online',
+        image: 'images/system-compras.png'
     }
 ];
 
@@ -129,7 +167,8 @@ let announcements = [
         category: 'Sistemas',
         priority: 'high',
         author: 'TI Corporativo',
-        publishDate: new Date('2025-01-10')
+        publishDate: new Date('2025-01-10'),
+        image: 'images/announcement-maintenance.png'
     },
     {
         id: 2,
@@ -139,7 +178,8 @@ let announcements = [
         category: 'RH',
         priority: 'medium',
         author: 'Recursos Humanos',
-        publishDate: new Date('2025-01-08')
+        publishDate: new Date('2025-01-08'),
+        image: 'images/announcement-rh.png'
     },
     {
         id: 3,
@@ -149,7 +189,8 @@ let announcements = [
         category: 'Segurança',
         priority: 'high',
         author: 'Segurança do Trabalho',
-        publishDate: new Date('2025-01-05')
+        publishDate: new Date('2025-01-05'),
+        image: 'images/announcement-safety.png'
     },
     {
         id: 4,
@@ -159,7 +200,8 @@ let announcements = [
         category: 'Financeiro',
         priority: 'medium',
         author: 'Financeiro',
-        publishDate: new Date('2025-01-03')
+        publishDate: new Date('2025-01-03'),
+        image: 'images/announcement-finance.png'
     },
     {
         id: 5,
@@ -169,7 +211,8 @@ let announcements = [
         category: 'Geral',
         priority: 'medium',
         author: 'Diretoria',
-        publishDate: new Date('2025-01-02')
+        publishDate: new Date('2025-01-02'),
+        image: 'images/announcement-meeting.png'
     }
 ];
 
@@ -178,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
     setupEventListeners();
     updateUI();
+    loadImages();
 });
 
 function initializeApp() {
@@ -191,8 +235,42 @@ function initializeApp() {
     renderSystems();
     renderAnnouncements();
     
-    // Mostrar seção inicial
-    showSection('dashboard');
+    // Mostrar seção inicial (hero se não autenticado, dashboard se autenticado)
+    if (currentUser.isAuthenticated) {
+        showSection('dashboard');
+    } else {
+        showHeroSection();
+    }
+}
+
+function loadImages() {
+    // Carregar logo
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg) {
+        logoImg.src = CONFIG.IMAGES.logo;
+        logoImg.onerror = function() {
+            this.style.display = 'none';
+            this.parentElement.innerHTML = '<div class="logo-fallback">R</div>';
+        };
+    }
+    
+    // Carregar imagem de fundo do hero
+    const heroImg = document.querySelector('.hero-image');
+    if (heroImg) {
+        heroImg.src = CONFIG.IMAGES.heroBg;
+        heroImg.onerror = function() {
+            this.style.display = 'none';
+        };
+    }
+    
+    // Aplicar textos configuráveis
+    document.querySelector('.logo-text h1').textContent = 'Hub Corporativo';
+    document.querySelector('.logo-text p').textContent = CONFIG.TEXTS.companyName;
+    
+    const heroTitle = document.querySelector('.hero-text h1');
+    const heroSubtitle = document.querySelector('.hero-text p');
+    if (heroTitle) heroTitle.textContent = CONFIG.TEXTS.heroTitle;
+    if (heroSubtitle) heroSubtitle.textContent = CONFIG.TEXTS.heroSubtitle;
 }
 
 function setupEventListeners() {
@@ -237,8 +315,124 @@ function setupEventListeners() {
     }
 }
 
+// Sistema de Autenticação
+function showLoginModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal active';
+    modal.id = 'loginModal';
+    modal.innerHTML = `
+        <div class="modal-backdrop"></div>
+        <div class="modal-content login-modal">
+            <div class="modal-header">
+                <h3>Acesso Administrativo</h3>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="login-form">
+                    <div class="login-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h4>Digite a senha de administrador</h4>
+                    <div class="input-group">
+                        <input type="password" id="adminPassword" placeholder="Senha do administrador" class="login-input">
+                        <button onclick="authenticateAdmin()" class="btn btn-primary login-btn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Entrar
+                        </button>
+                    </div>
+                    <p class="login-help">
+                        <i class="fas fa-info-circle"></i>
+                        Entre em contato com o TI se esqueceu a senha
+                    </p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Focar no input de senha
+    setTimeout(() => {
+        document.getElementById('adminPassword').focus();
+    }, 100);
+    
+    // Enter para fazer login
+    document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            authenticateAdmin();
+        }
+    });
+}
+
+function authenticateAdmin() {
+    const password = document.getElementById('adminPassword').value;
+    
+    if (password === CONFIG.ADMIN_PASSWORD) {
+        currentUser.role = 'admin';
+        currentUser.isAuthenticated = true;
+        document.body.className = 'admin';
+        
+        closeModal('loginModal');
+        showToast('Login Realizado', 'Bem-vindo, Administrador!', 'success');
+        
+        // Atualizar interface
+        document.getElementById('currentRole').textContent = 'Administrador';
+        updateUI();
+        
+        // Ir para dashboard
+        showSection('dashboard');
+    } else {
+        showToast('Senha Incorreta', 'A senha digitada está incorreta', 'error');
+        document.getElementById('adminPassword').value = '';
+        document.getElementById('adminPassword').focus();
+    }
+}
+
+function logout() {
+    currentUser.role = 'viewer';
+    currentUser.isAuthenticated = false;
+    document.body.className = 'viewer';
+    
+    document.getElementById('currentRole').textContent = 'Visualizador';
+    showToast('Logout Realizado', 'Você foi desconectado', 'info');
+    
+    updateUI();
+    showHeroSection();
+}
+
 // Navegação
+function showHeroSection() {
+    // Mostrar hero section
+    const heroSection = document.getElementById('heroSection');
+    const mainContainer = document.querySelector('.main-container');
+    
+    if (heroSection) {
+        heroSection.style.display = 'block';
+    }
+    if (mainContainer) {
+        mainContainer.style.display = 'none';
+    }
+    
+    // Remover classe active de todos os nav items
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+}
+
 function showSection(sectionId) {
+    // Esconder hero section
+    const heroSection = document.getElementById('heroSection');
+    const mainContainer = document.querySelector('.main-container');
+    
+    if (heroSection) {
+        heroSection.style.display = 'none';
+    }
+    if (mainContainer) {
+        mainContainer.style.display = 'flex';
+    }
+    
     // Remover classe active de todas as seções
     document.querySelectorAll('.content-section').forEach(section => {
         section.classList.remove('active');
@@ -275,6 +469,16 @@ function toggleSidebar() {
 
 // Troca de perfil
 function switchRole(newRole) {
+    if (newRole === 'admin' && !currentUser.isAuthenticated) {
+        showLoginModal();
+        return;
+    }
+    
+    if (newRole === 'viewer') {
+        logout();
+        return;
+    }
+    
     currentUser.role = newRole;
     document.body.className = newRole;
     
@@ -309,9 +513,14 @@ function renderNotifications() {
     // Renderizar lista
     notificationList.innerHTML = notifications.map(notification => `
         <div class="notification-item ${!notification.read ? 'unread' : ''}" onclick="markNotificationAsRead(${notification.id})">
-            <h4>${notification.title}</h4>
-            <p>${notification.message}</p>
-            <small>${formatDate(notification.timestamp)}</small>
+            <div class="notification-icon">
+                <i class="${getTypeIcon(notification.type)}"></i>
+            </div>
+            <div class="notification-content">
+                <h4>${notification.title}</h4>
+                <p>${notification.message}</p>
+                <small>${formatDate(notification.timestamp)}</small>
+            </div>
         </div>
     `).join('');
 }
@@ -349,6 +558,7 @@ function addNotification(title, message, type = 'info') {
 function renderDashboard() {
     renderRecentFiles();
     renderRecentAnnouncements();
+    renderSystemsStatus();
 }
 
 function renderRecentFiles() {
@@ -358,13 +568,16 @@ function renderRecentFiles() {
     const recent = files.slice(0, 3);
     recentFiles.innerHTML = recent.map(file => `
         <div class="recent-item">
-            <div class="recent-item-content">
+            <div class="recent-icon">
+                <i class="fas fa-file-excel"></i>
+            </div>
+            <div class="recent-content">
                 <h4>${file.name}</h4>
                 <p>Por ${file.author} • ${file.size} • ${file.downloads} downloads</p>
-            </div>
-            <div class="recent-item-meta">
-                <span class="file-category">${file.category}</span>
-                <small>${formatDate(file.uploadDate)}</small>
+                <div class="recent-meta">
+                    <span class="file-category">${file.category}</span>
+                    <small>${formatDate(file.uploadDate)}</small>
+                </div>
             </div>
         </div>
     `).join('');
@@ -377,18 +590,55 @@ function renderRecentAnnouncements() {
     const recent = announcements.slice(0, 3);
     recentAnnouncements.innerHTML = recent.map(announcement => `
         <div class="recent-item">
-            <div class="recent-item-content">
-                <h4>${announcement.title}</h4>
-                <p>${announcement.content.substring(0, 100)}...</p>
+            <div class="recent-icon ${announcement.type}">
+                <i class="${getTypeIcon(announcement.type)}"></i>
             </div>
-            <div class="recent-item-meta">
-                <span class="announcement-badge ${announcement.type}">${getTypeLabel(announcement.type)}</span>
-                <span class="announcement-badge category">${announcement.category}</span>
-                <small>Por ${announcement.author}</small>
-                <small>${formatDate(announcement.publishDate)}</small>
+            <div class="recent-content">
+                <h4>${announcement.title}</h4>
+                <p>${announcement.content.substring(0, 80)}...</p>
+                <div class="recent-meta">
+                    <span class="announcement-badge ${announcement.type}">${getTypeLabel(announcement.type)}</span>
+                    <span class="announcement-badge category">${announcement.category}</span>
+                    <small>Por ${announcement.author}</small>
+                </div>
             </div>
         </div>
     `).join('');
+}
+
+function renderSystemsStatus() {
+    const systemsStatus = document.getElementById('systemsStatus');
+    if (!systemsStatus) return;
+    
+    const onlineSystems = systems.filter(s => s.status === 'online');
+    const maintenanceSystems = systems.filter(s => s.status === 'maintenance');
+    const offlineSystems = systems.filter(s => s.status === 'offline');
+    
+    systemsStatus.innerHTML = `
+        <div class="status-summary">
+            <div class="status-item online">
+                <span class="status-dot"></span>
+                <span>${onlineSystems.length} Online</span>
+            </div>
+            <div class="status-item maintenance">
+                <span class="status-dot"></span>
+                <span>${maintenanceSystems.length} Manutenção</span>
+            </div>
+            <div class="status-item offline">
+                <span class="status-dot"></span>
+                <span>${offlineSystems.length} Offline</span>
+            </div>
+        </div>
+        <div class="systems-list">
+            ${systems.slice(0, 4).map(system => `
+                <div class="system-item ${system.status}">
+                    <i class="${system.icon}"></i>
+                    <span>${system.name}</span>
+                    <span class="system-status ${system.status}">${getStatusLabel(system.status)}</span>
+                </div>
+            `).join('')}
+        </div>
+    `;
 }
 
 // Arquivos
@@ -397,9 +647,14 @@ function renderFiles() {
     if (!filesList) return;
     
     filesList.innerHTML = files.map(file => `
-        <div class="file-item">
-            <div class="file-icon">
-                <i class="fas fa-file-excel"></i>
+        <div class="file-card">
+            <div class="file-header">
+                <div class="file-icon">
+                    <i class="fas fa-file-excel"></i>
+                </div>
+                <div class="file-menu">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
             </div>
             <div class="file-content">
                 <h4>${file.name}</h4>
@@ -407,16 +662,21 @@ function renderFiles() {
                     <span><i class="fas fa-user"></i> ${file.author}</span>
                     <span><i class="fas fa-calendar"></i> ${formatDate(file.uploadDate)}</span>
                     <span><i class="fas fa-hdd"></i> ${file.size}</span>
-                    <span><i class="fas fa-download"></i> ${file.downloads} downloads</span>
                 </div>
-                <span class="file-category">${file.category}</span>
+                <div class="file-stats">
+                    <span class="file-category">${file.category}</span>
+                    <span class="file-downloads">
+                        <i class="fas fa-download"></i> ${file.downloads}
+                    </span>
+                </div>
             </div>
             <div class="file-actions">
                 <button class="btn btn-secondary" onclick="downloadFile(${file.id})">
-                    <i class="fas fa-download"></i> Download
+                    <i class="fas fa-download"></i>
+                    Download
                 </button>
                 ${currentUser.role === 'admin' ? `
-                    <button class="btn btn-secondary" onclick="deleteFile(${file.id})" style="color: var(--error);">
+                    <button class="btn btn-danger" onclick="deleteFile(${file.id})">
                         <i class="fas fa-trash"></i>
                     </button>
                 ` : ''}
@@ -438,9 +698,14 @@ function filterFiles() {
     
     const filesList = document.getElementById('filesList');
     filesList.innerHTML = filteredFiles.map(file => `
-        <div class="file-item">
-            <div class="file-icon">
-                <i class="fas fa-file-excel"></i>
+        <div class="file-card">
+            <div class="file-header">
+                <div class="file-icon">
+                    <i class="fas fa-file-excel"></i>
+                </div>
+                <div class="file-menu">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
             </div>
             <div class="file-content">
                 <h4>${file.name}</h4>
@@ -448,16 +713,21 @@ function filterFiles() {
                     <span><i class="fas fa-user"></i> ${file.author}</span>
                     <span><i class="fas fa-calendar"></i> ${formatDate(file.uploadDate)}</span>
                     <span><i class="fas fa-hdd"></i> ${file.size}</span>
-                    <span><i class="fas fa-download"></i> ${file.downloads} downloads</span>
                 </div>
-                <span class="file-category">${file.category}</span>
+                <div class="file-stats">
+                    <span class="file-category">${file.category}</span>
+                    <span class="file-downloads">
+                        <i class="fas fa-download"></i> ${file.downloads}
+                    </span>
+                </div>
             </div>
             <div class="file-actions">
                 <button class="btn btn-secondary" onclick="downloadFile(${file.id})">
-                    <i class="fas fa-download"></i> Download
+                    <i class="fas fa-download"></i>
+                    Download
                 </button>
                 ${currentUser.role === 'admin' ? `
-                    <button class="btn btn-secondary" onclick="deleteFile(${file.id})" style="color: var(--error);">
+                    <button class="btn btn-danger" onclick="deleteFile(${file.id})">
                         <i class="fas fa-trash"></i>
                     </button>
                 ` : ''}
@@ -513,25 +783,48 @@ function handleFileUpload(event) {
         return;
     }
     
-    // Simular upload
-    const newFile = {
-        id: files.length + 1,
-        name: file.name,
-        author: currentUser.name,
-        uploadDate: new Date(),
-        size: formatFileSize(file.size),
-        category: 'Geral',
-        downloads: 0
-    };
+    // Simular upload com progress
+    const progressContainer = document.getElementById('uploadProgress');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
     
-    files.unshift(newFile);
-    renderFiles();
-    renderDashboard();
-    closeModal('uploadModal');
-    showToast('Arquivo Carregado', `${file.name} foi carregado com sucesso`, 'success');
+    progressContainer.style.display = 'block';
     
-    // Limpar input
-    event.target.value = '';
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 30;
+        if (progress > 100) progress = 100;
+        
+        progressFill.style.width = progress + '%';
+        progressText.textContent = `Carregando arquivo... ${Math.round(progress)}%`;
+        
+        if (progress >= 100) {
+            clearInterval(interval);
+            
+            // Adicionar arquivo
+            const newFile = {
+                id: files.length + 1,
+                name: file.name,
+                author: currentUser.name,
+                uploadDate: new Date(),
+                size: formatFileSize(file.size),
+                category: 'Geral',
+                downloads: 0,
+                image: 'images/file-excel.png'
+            };
+            
+            files.unshift(newFile);
+            renderFiles();
+            renderDashboard();
+            closeModal('uploadModal');
+            showToast('Arquivo Carregado', `${file.name} foi carregado com sucesso`, 'success');
+            
+            // Limpar input e progress
+            event.target.value = '';
+            progressContainer.style.display = 'none';
+            progressFill.style.width = '0%';
+        }
+    }, 200);
 }
 
 // Sistemas
@@ -540,29 +833,33 @@ function renderSystems() {
     if (!systemsList) return;
     
     systemsList.innerHTML = systems.map(system => `
-        <div class="system-card">
+        <div class="system-card ${system.status}">
             <div class="system-header">
                 <div class="system-icon">
                     <i class="${system.icon}"></i>
                 </div>
-                <div class="system-info">
-                    <h4>${system.name}</h4>
-                    <span class="system-category">${system.category}</span>
+                <div class="system-status-indicator">
+                    <span class="status-dot ${system.status}"></span>
                 </div>
                 ${currentUser.role === 'admin' ? `
-                    <button class="btn btn-secondary" onclick="deleteSystem(${system.id})" style="color: var(--error); margin-left: auto;">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    <div class="system-menu">
+                        <i class="fas fa-ellipsis-h" onclick="showSystemMenu(${system.id})"></i>
+                    </div>
                 ` : ''}
             </div>
-            <p class="system-description">${system.description}</p>
+            <div class="system-content">
+                <h4>${system.name}</h4>
+                <p class="system-category">${system.category}</p>
+                <p class="system-description">${system.description}</p>
+            </div>
             <div class="system-footer">
                 <span class="system-status ${system.status}">
                     ${getStatusLabel(system.status)}
                 </span>
                 <button class="btn btn-primary" onclick="accessSystem('${system.url}')" 
                         ${system.status === 'offline' ? 'disabled' : ''}>
-                    <i class="fas fa-external-link-alt"></i> Acessar
+                    <i class="fas fa-external-link-alt"></i>
+                    Acessar
                 </button>
             </div>
         </div>
@@ -588,11 +885,13 @@ function addSystem() {
         url: 'https://novo-sistema.raizen.com.br',
         category: 'Geral',
         icon: 'fas fa-external-link-alt',
-        status: 'online'
+        status: 'online',
+        image: 'images/system-default.png'
     };
     
     systems.unshift(newSystem);
     renderSystems();
+    renderDashboard();
     showToast('Sistema Adicionado', 'Novo sistema foi adicionado com sucesso', 'success');
 }
 
@@ -604,6 +903,7 @@ function deleteSystem(systemId) {
     
     systems = systems.filter(s => s.id !== systemId);
     renderSystems();
+    renderDashboard();
     showToast('Sistema Removido', 'Sistema foi removido com sucesso', 'info');
 }
 
@@ -613,29 +913,35 @@ function renderAnnouncements() {
     if (!announcementsList) return;
     
     announcementsList.innerHTML = announcements.map(announcement => `
-        <div class="announcement-item ${announcement.type}">
+        <div class="announcement-card ${announcement.type}">
             <div class="announcement-header">
                 <div class="announcement-icon">
                     <i class="${getTypeIcon(announcement.type)}"></i>
                 </div>
-                <div class="announcement-content">
-                    <h4>${announcement.title}</h4>
-                    <div class="announcement-badges">
-                        <span class="announcement-badge type">${getTypeLabel(announcement.type)}</span>
-                        <span class="announcement-badge category">${announcement.category}</span>
-                        <span class="announcement-badge priority">${getPriorityLabel(announcement.priority)}</span>
-                    </div>
-                    <p class="announcement-text">${announcement.content}</p>
+                <div class="announcement-badges">
+                    <span class="announcement-badge type">${getTypeLabel(announcement.type)}</span>
+                    <span class="announcement-badge category">${announcement.category}</span>
+                    <span class="announcement-badge priority">${getPriorityLabel(announcement.priority)}</span>
                 </div>
                 ${currentUser.role === 'admin' ? `
-                    <button class="btn btn-secondary" onclick="deleteAnnouncement(${announcement.id})" style="color: var(--error); margin-left: auto;">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    <div class="announcement-menu">
+                        <i class="fas fa-ellipsis-h" onclick="showAnnouncementMenu(${announcement.id})"></i>
+                    </div>
                 ` : ''}
             </div>
+            <div class="announcement-content">
+                <h4>${announcement.title}</h4>
+                <p>${announcement.content}</p>
+            </div>
             <div class="announcement-footer">
-                <span>Por ${announcement.author}</span>
-                <span>${formatDate(announcement.publishDate)}</span>
+                <div class="announcement-author">
+                    <i class="fas fa-user"></i>
+                    <span>Por ${announcement.author}</span>
+                </div>
+                <div class="announcement-date">
+                    <i class="fas fa-calendar"></i>
+                    <span>${formatDate(announcement.publishDate)}</span>
+                </div>
             </div>
         </div>
     `).join('');
@@ -655,7 +961,8 @@ function createAnnouncement() {
         category: 'Geral',
         priority: 'medium',
         author: currentUser.name,
-        publishDate: new Date()
+        publishDate: new Date(),
+        image: 'images/announcement-default.png'
     };
     
     announcements.unshift(newAnnouncement);
@@ -688,6 +995,11 @@ function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.classList.remove('active');
+        
+        // Se for modal de login, remover do DOM
+        if (modalId === 'loginModal') {
+            modal.remove();
+        }
     }
 }
 
@@ -723,7 +1035,10 @@ function showToast(title, message, type = 'info') {
 function removeToast(toastId) {
     const toast = document.getElementById(toastId);
     if (toast) {
-        toast.remove();
+        toast.style.animation = 'slideOut 0.3s ease forwards';
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
     }
 }
 
@@ -784,16 +1099,26 @@ function getPriorityLabel(priority) {
 
 function updateUI() {
     // Atualizar contadores nos badges de navegação
-    document.querySelector('[onclick="showSection(\'dashboard\')"] .nav-badge').textContent = '4';
-    document.querySelector('[onclick="showSection(\'arquivos\')"] .nav-badge').textContent = files.length;
-    document.querySelector('[onclick="showSection(\'sistemas\')"] .nav-badge').textContent = systems.length;
-    document.querySelector('[onclick="showSection(\'avisos\')"] .nav-badge').textContent = announcements.length;
+    const dashboardBadge = document.querySelector('[onclick="showSection(\'dashboard\')"] .nav-badge');
+    const arquivosBadge = document.querySelector('[onclick="showSection(\'arquivos\')"] .nav-badge');
+    const sistemasBadge = document.querySelector('[onclick="showSection(\'sistemas\')"] .nav-badge');
+    const avisosBadge = document.querySelector('[onclick="showSection(\'avisos\')"] .nav-badge');
+    
+    if (dashboardBadge) dashboardBadge.textContent = '4';
+    if (arquivosBadge) arquivosBadge.textContent = files.length;
+    if (sistemasBadge) sistemasBadge.textContent = systems.length;
+    if (avisosBadge) avisosBadge.textContent = announcements.length;
 }
 
 // Fechar modal ao clicar fora
 document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal')) {
-        e.target.classList.remove('active');
+    if (e.target.classList.contains('modal-backdrop')) {
+        const modal = e.target.parentElement;
+        if (modal.id === 'loginModal') {
+            modal.remove();
+        } else {
+            modal.classList.remove('active');
+        }
     }
 });
 
@@ -802,5 +1127,10 @@ window.addEventListener('resize', function() {
     if (window.innerWidth > 1024) {
         document.getElementById('sidebar').classList.remove('active');
     }
+});
+
+// Animações de entrada
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
 });
 
